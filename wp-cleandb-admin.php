@@ -80,10 +80,9 @@ function CleanDBUnusedMySQL() {
 	global $wpdb;
 	
 	$query		= 'SHOW TABLE STATUS FROM '. DB_NAME;
-	$result		= $wpdb->query($query);
+	$result		= $wpdb->get_results($query, ARRAY_A);
 	
-	while($row = mysql_fetch_assoc($result))
-	{
+	foreach($result as $row) {
 		$optimize	= 'OPTIMIZE TABLE '. $row['Name'];
 		$execute	= mysqli_query($optimize);
 	}
