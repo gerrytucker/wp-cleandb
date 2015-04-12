@@ -121,10 +121,11 @@ function PostRevisionSize() {
 	$postrevision 	= $wpdb->get_var($query);
 	
 	$sql 			= 'SHOW TABLE STATUS FROM '. DB_NAME .' WHERE Name = \''. $wpdb->posts .'\'';
-	$query			= mysqli_query($sql);
-	$result			= mysql_fetch_assoc($query);
-	$size			= ($result['Avg_row_length'] * $postrevision) / 1024;
-	$size			= round($size,2);
+	$query			= $wpdb->get_results($sql, ARRAY_A);
+	foreach($query as $result) {
+		$size			= ($result['Avg_row_length'] * $postrevision) / 1024;
+		$size			= round($size,2);
+	}
 	
 	return $size;
 }
@@ -147,10 +148,11 @@ function SpamCommentSize() {
 	$spam			= $wpdb->get_var($query);
 	
 	$sql 			= 'SHOW TABLE STATUS FROM '. DB_NAME .' WHERE Name = \''. $wpdb->comments .'\'';
-	$query			= mysqli_query($sql);
-	$result			= mysql_fetch_assoc($query);
-	$size			= ($result['Avg_row_length'] * $spam) / 1024;
-	$size			= round($size,2);
+	$query			= $wpdb->get_results($sql, ARRAY_A);
+	foreach($query as $result) {
+		$size			= ($result['Avg_row_length'] * $spam) / 1024;
+		$size			= round($size,2);
+	}
 	
 	return $size;
 }
@@ -173,10 +175,11 @@ function UnapprovedCommentSize() {
 	$unapproved		= $wpdb->get_var($query);
 	
 	$sql 			= 'SHOW TABLE STATUS FROM '. DB_NAME .' WHERE Name = \''. $wpdb->comments .'\'';
-	$query			= mysqli_query($sql);
-	$result			= mysql_fetch_assoc($query);
-	$size			= ($result['Avg_row_length'] * $unapproved) / 1024;
-	$size			= round($size,2);
+	$query			= $wpdb->get_results($sql, ARRAY_A);
+	foreach($query as $result) {
+		$size			= ($result['Avg_row_length'] * $unapproved) / 1024;
+		$size			= round($size,2);
+	}
 	
 	return $size;
 }
@@ -196,10 +199,10 @@ function UnusedMySQLSize() {
 	global $wpdb;
 	
 	$sql				= 'SHOW TABLE STATUS FROM '. DB_NAME;
-	$query				= mysqli_query($sql);
+	$query				= $wpdb->get_results($sql, ARRAY_A);
 	$totalunusedspace 	= 0;
 	
-	while($row = mysql_fetch_assoc($query)) {
+	foreach($query as $row)) {
 		$unusedspace 		 = $row['Data_free'] / 1024;
 		$unusedspace 		 = round($unusedspace,2);
 		$totalunusedspace   += $unusedspace;
@@ -223,11 +226,11 @@ function UnusedPostMetaSize() {
 	$postmeta 	= $wpdb->get_var($query);
 
 	$sql 			= 'SHOW TABLE STATUS FROM '. DB_NAME .' WHERE Name = \''. $wpdb->postmeta .'\'';
-	$query			= mysqli_query($sql);
-	$result			= mysql_fetch_assoc($query);
-	$size			= ($result['Avg_row_length'] * $postmeta) / 1024;
-	$size			= round($size,2);
-	
+	$query			= $wpdb->get_results($sql, ARRAY_A);
+	foreach($query as $result) {
+		$size			= ($result['Avg_row_length'] * $postmeta) / 1024;
+		$size			= round($size,2);
+	}
 	return $size;
 }
 
@@ -251,11 +254,11 @@ function UnusedTagsSize() {
 	$tags 			= $wpdb->get_var($query);
 
 	$sql 			= 'SHOW TABLE STATUS FROM '. DB_NAME .' WHERE Name = \''. $wpdb->terms .'\'';
-	$query			= mysqli_query($sql);
-	$result			= mysql_fetch_assoc($query);
-	$size			= ($result['Avg_row_length'] * $tags) / 1024;
-	$size			= round($size,2);
-	
+	$query			= $wpdb->get_results($sql, ARRAY_A);
+	foreach($query as $result) {
+		$size			= ($result['Avg_row_length'] * $tags) / 1024;
+		$size			= round($size,2);
+	}
 	return $size;
 }
 
