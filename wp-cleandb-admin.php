@@ -202,7 +202,7 @@ function UnusedMySQLSize() {
 	$query				= $wpdb->get_results($sql, ARRAY_A);
 	$totalunusedspace 	= 0;
 	
-	foreach($query as $row)) {
+	foreach($query as $row) {
 		$unusedspace 		 = $row['Data_free'] / 1024;
 		$unusedspace 		 = round($unusedspace,2);
 		$totalunusedspace   += $unusedspace;
