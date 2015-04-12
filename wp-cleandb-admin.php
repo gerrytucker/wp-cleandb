@@ -100,10 +100,10 @@ function DatabaseSize() {
 	global $wpdb;
 	
 	$sql			= 'SHOW TABLE STATUS FROM '. DB_NAME;
-	$query			= mysqli_query($sql);
+	$query			= $wpdb->get_results($sql, ARRAY_A);
 	$totalusedspace = 0;
 	
-	while($row = mysql_fetch_assoc($query)) {
+	foreach($query as $row) {
 		$usedspace 		 = $row['Data_length'] + $row['Index_length'];
 		$usedspace 		 = $usedspace / 1024;
 		$usedspace 		 = round($usedspace,2);
