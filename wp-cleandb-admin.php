@@ -290,7 +290,7 @@ function Division($total, $division) {
 
 <div class="wrap">
 	<?php screen_icon(); ?>
-	<h2><?php _e('WP-Cleanup'); ?></h2>
+	<h2><?php _e('WP-CleanDB'); ?></h2>
 
 	<?php if($cleaneddb <> '') { ?>
 	<div id="message" class="updated fade"><?php echo $cleaneddb; ?></div>
@@ -298,7 +298,7 @@ function Division($total, $division) {
 
 	<h3>At a glance</h3>
 	<div align="center">
-		<img src="http://chart.apis.google.com/chart?cht=p&chs=850x300&chco=247AA2&chf=bg,s,F9F9F9&chl=Useful+WordPress+Data|Post+revisions|Spam+comments|Unapproved+comments|Unused+MySQL+Data|Unused+tags|Unused+post+meta&chd=t:<?php echo Division(Database_Size(), Useful_WordPress_Data_Size()); ?>,<?php echo Division(Database_Size(), Post_Revision_Size()); ?>,<?php echo Division(Database_Size(), Spam_Comment_Size()); ?>,<?php echo Division(Database_Size(), Unapproved_Comments_Size()); ?>,<?php echo Division(Database_Size(), Unused_MySQL_Size()); ?>,<?php echo Division(Database_Size(), Unused_Tags_Size()); ?>,<?php echo Division(Database_Size(), Unused_Post_Meta_Size()); ?>">
+		<img src="http://chart.apis.google.com/chart?cht=p&chs=850x300&chco=247AA2&chf=bg,s,F9F9F9&chl=Useful+WordPress+Data|Post+Revisions|Spam+Comments|Unapproved+Comments|Unused+MySQL+Data|Unused+Tags|Unused+Post+Meta&chd=t:<?php echo Division(Database_Size(), Useful_WordPress_Data_Size()); ?>,<?php echo Division(Database_Size(), Post_Revision_Size()); ?>,<?php echo Division(Database_Size(), Spam_Comment_Size()); ?>,<?php echo Division(Database_Size(), Unapproved_Comments_Size()); ?>,<?php echo Division(Database_Size(), Unused_MySQL_Size()); ?>,<?php echo Division(Database_Size(), Unused_Tags_Size()); ?>,<?php echo Division(Database_Size(), Unused_Post_Meta_Size()); ?>">
 	</div>
 	
 	<h3>Total report</h3>
@@ -310,60 +310,60 @@ function Division($total, $division) {
 			 <th width="50%">Description</th>
 			 <th width="15%">Amount</th>
 			 <th width="15%">Size</th>
-			 <th width="15%">Percentage of total</th>
+			 <th width="15%">Percentage of Total</th>
 			</thead>
 			<tr>
 				<td></td>
-				<td>Database size</td>
+				<td>Database Size</td>
 				<td></td>
 				<td><?php echo Database_Size(); ?> kb</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td>Useful WordPress data</td>
+				<td>Useful WordPress Data</td>
 				<td></td>
 				<td><?php echo Useful_WordPress_Data_Size(); ?> kb</td>
 				<td><?php echo Division(Database_Size(),Useful_WordPress_Data_Size()); ?>%</td>
 			</tr>
 			<tr>
 				<td align="center"><input type="checkbox" name="cleanup-rev" id="cleanup-rev"></td>
-				<td>Post revisions</td>
+				<td>Post Revisions</td>
 				<td><?php echo Post_Revisions_Total(); ?></td>
 				<td><?php echo Post_Revision_Size(); ?> kb</td>
 				<td><?php echo Division(Database_Size(),Post_Revision_Size()); ?>%</td>
 			</tr>
 			<tr>
 				<td align="center"><input type="checkbox" name="cleanup-spam" id="cleanup-spam"></td>
-				<td>Spam comments</td>
+				<td>Spam Comments</td>
 				<td><?php echo Spam_Comments_Total(); ?></td>
 				<td><?php echo Spam_Comment_Size(); ?> kb</td>
 				<td><?php echo Division(Database_Size(),Spam_Comment_Size()); ?>%</td>
 			</tr>
 			<tr>
 				<td align="center"><input type="checkbox" name="cleanup-unapproved" id="cleanup-unapproved"></td>
-				<td>Unapproved comments</td>
+				<td>Unapproved Comments</td>
 				<td><?php echo Unapproved_Comment_Total(); ?></td>
 				<td><?php echo Unapproved_Comments_Size(); ?> kb</td>
 				<td><?php echo Division(Database_Size(),Unapproved_Comments_Size()); ?>%</td>
 			</tr>
 			<tr>
 				<td align="center"><input type="checkbox" name="cleanup-tags" id="cleanup-tags"></td>
-				<td>Unused tags</td>
+				<td>Unused Tags</td>
 				<td><?php echo Unused_Tags_Total(); ?></td>
 				<td><?php echo Unused_Tags_Size(); ?> kb</td>
 				<td><?php echo Division(Database_Size(),Unused_Tags_Size()); ?>%</td>
 			</tr>
 			<tr>
 				<td align="center"><input type="checkbox" name="cleanup-postmeta" id="cleanup-postmeta" ></td>
-				<td>Unused post meta</td>
+				<td>Unused Post Meta</td>
 				<td><?php echo Unused_Post_Meta_Total(); ?></td>
 				<td><?php echo Unused_Post_Meta_Size(); ?> kb</td>
 				<td><?php echo Division(Database_Size(),Unused_Post_Meta_Size()); ?>%</td>
 			</tr>
 			<tr>
 				<td align="center"><input type="checkbox" name="cleanup-mysql" id="cleanup-mysql"></td>
-				<td>Unused MySQL data</td>
+				<td>Unused MySQL Data</td>
 				<td></td>
 				<td><?php echo Unused_MySQL_Size(); ?> kb</td>
 				<td><?php echo Division(Database_Size(),Unused_MySQL_Size()); ?>%</td>
