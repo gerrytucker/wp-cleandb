@@ -3,11 +3,9 @@
 Plugin Name: WP-CleanDB
 Plugin URI: https://github.com/gerrytucker/wp-cleandb
 Description: Cleanup your Wordpress database in one click!
-Version: 1.0.7
+Version: 1.1
 Author: Gerry Tucker
 Author URI: http://gerrytucker.co.uk
-GitHub Plugin URI: gerrytucker/wp-cleandb
-GitHub Branch: master
 */
 
 function cleandb_admin() {

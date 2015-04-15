@@ -89,7 +89,7 @@ function Optimize_Tables() {
 	
 	$query	= 'SHOW TABLE STATUS FROM ' . DB_NAME;
 	$result = $wpdb->get_results($query, ARRAY_A);
-	
+	var_dump($result);
 	foreach($result as $row) {
 		$optimize	= 'OPTIMIZE TABLE ' . $row['Name'];
 		$execute	= $wpdb->query($optimize);
